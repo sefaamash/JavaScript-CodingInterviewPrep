@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="api"></p>
+    <script>
+        api='https://api.covid19api.com/summary'
+        
+        const data=async (api)=>{
+            try{
+            const response=await fetch(api)
+            if (!response.ok) {
+                throw new Error(`Error! status: ${response.status}`);
+              }
+            apiData=await response.json()
+        
+            myData=apiData.Countries[101]
+          
+            document.getElementById('api').innerHTML=`The name of the country is ${myData.Country} and 
+            total confiremd cases are ${myData.TotalConfirmed}`
+            }
+            
+            catch(e){
+                console.log(e)
+            }
+        }
+        data(api)</script>
+
+        
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
